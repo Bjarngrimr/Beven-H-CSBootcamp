@@ -1,0 +1,46 @@
+- name: Install metric beat
+  hosts: webservers
+  become: true
+  tasks:
+    # Use command module
+  - name: download and install Metric beat
+    apt:
+      deb: "https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.13.2-amd64.deb"
+      state: present
+
+  - name: Update setup.kibana in /etc/metricbeat/metricbeat.yml
+    replace:
+      path: /etc/metricbeat/metricbeat.yml
+      regexp: '(\s+)#host: "localhost:5601"(\s+.*)?$'
+      replace: '\1host: "10.0.0.4:5601"\2'
+      backup: yes
+
+  - name: Update output.elasticsearch in /etc/metricbeat/metricbeat.yml
+    replace:
+      path: /etc/metricbeat/metricbeat.yml
+      regexp: '(\s+)hosts: \["localhost:9200"\](\s+.*)?$'
+      replace: '\1hosts: ["10.0.0.4:9200"]\2'
+      backup: yes
+
+    # Use copy module
+ # - name: drop in metricbeat config
+   # copy:
+     # src: /etc/ansible/roles/metricbeat-config.yml
+     # dest: /etc/metricbeat/metricbeat.yml
+
+    # Use command module
+  - name: enable and configure docker module for metric beat
+    command: metricbeat modules enable docker
+
+    # Use command module
+  - name: setup metric beat
+    command: metricbeat setup
+
+    # Use command module
+
+    # Use systemd module
+  - name: enable service metricbeat on boot
+    systemd:
+      name: metricbeat
+      state: started
+      enabled: yes
