@@ -113,7 +113,7 @@ SSH into the control node and follow the steps below:
 - Also update ansible.cfg to set the remote_user parameter since all of our VM's in this project use the same username.
 
 - Run the playbook, and navigate to  http://20.36.33.3/setup.php to check that the installation worked as expected.
-- Also navigate to 40.113.225.39:5601 to test is the Elk playbook has been correctly set up.
+- Also navigate to http://40.113.225.39:5601 to test is the Elk playbook has been correctly set up.
 
 You can use these Specific commands to work these playbooks on MY Networks specifically;
 ssh RedAdmin@20.36.33.3 - to connect to the Jump Box machine.
