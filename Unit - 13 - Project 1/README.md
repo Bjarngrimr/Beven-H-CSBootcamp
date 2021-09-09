@@ -116,9 +116,11 @@ SSH into the control node and follow the steps below:
 - Also navigate to http://40.113.225.39:5601 to test is the Elk playbook has been correctly set up.
 
 You can use these Specific commands to work these playbooks on MY Networks specifically;
-ssh RedAdmin@20.36.33.3 - to connect to the Jump Box machine.
-sudo docker ps -a - to list the installed containers
-sudo docker start silly_franklin - to start the specific container
-sudo docker attach silly_franklin - to attach to the said container
-ansible webservers -m command -a "ps aux" - to run a command on all machines in the webservers group at the same time, in this case listing all running services
-ansible-playbook elk-install.yml - to run a playbook, in this case the elk installation playbook.
+
+
+  - ssh RedAdmin@20.36.33.3 - to connect to the Jump Box machine.
+  - sudo docker ps -a - to list the installed containers
+  - sudo docker start silly_franklin - to start the specific container
+  - sudo docker attach silly_franklin - to attach to the said container
+  - ansible webservers -m command -a "ps aux" - to run a command on all machines in the webservers group at the same time, in this case listing all running services
+  - ansible-playbook elk-install.yml - to run a playbook, in this case the elk installation playbook.
