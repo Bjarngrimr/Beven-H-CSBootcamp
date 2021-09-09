@@ -6,10 +6,12 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook files may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+ [Elk Install](Playbooks/install-elk.yml)
+ [Filebeat Install](Playbooks/filebeat-playbook.yml)
+ [Metricbeat Install](Playbooks/metricbeat-playbook.yml)
 
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
   - Beats in Use
@@ -29,7 +31,6 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - Metricbeat records the metrics from the targeted operating system and can show us any changes to the services running on the server, it will also send this information through to elastic search to make it easier for us to observe.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 |         Name         	|  Function  	| IP Address 	|   Operating System   	|
 |:--------------------:	|:----------:	|:----------:	|:--------------------:	|
@@ -73,7 +74,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+[Docker ps Success](Images/elk-docker.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -89,18 +90,35 @@ These Beats allow us to collect the following information from each machine:
 - Filebeat collects information from logs and any changes made
 - Metricbeat collects information on the metrics from the OS and reports changes through any services running
 
+I also have the Visual Proof of Both Metricbeat and Filebeat are working correctly as intended;
+
+[Filebeat](Images/filebeat-success.png)
+[Metricbeat](Images/metricbeat-success.png)
+
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
 - Copy the Playbook file to The Ansible container.
 - Update the hosts file to include;
-  
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+ ## [webservers] 
+ ## 10.1.0.5 ansible_python_interpreter=/usr/bin/python3 
+ ## 10.1.0.6 ansible_python_interpreter=/usr/bin/python3 
+ ## 10.1.0.9 ansible_python_interpreter=/usr/bin/python3
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+## [elk] 
+## 10.0.0.4 ansible_python_interpreter=/usr/bin/python3
+
+- Also update ansible.cfg to set the remote_user parameter since all of our VM's in this project use the same username.
+
+- Run the playbook, and navigate to  http://20.36.33.3/setup.php to check that the installation worked as expected.
+- Also navigate to 40.113.225.39:5601 to test is the Elk playbook has been correctly set up.
+
+You can use these Specific commands to work these playbooks on MY Networks specifically;
+ssh RedAdmin@20.36.33.3 - to connect to the Jump Box machine.
+sudo docker ps -a - to list the installed containers
+sudo docker start silly_franklin - to start the specific container
+sudo docker attach silly_franklin - to attach to the said container
+ansible webservers -m command -a "ps aux" - to run a command on all machines in the webservers group at the same time, in this case listing all running services
+ansible-playbook elk-install.yml - to run a playbook, in this case the elk installation playbook.
