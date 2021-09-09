@@ -1,0 +1,65 @@
+Phase 1 -----
+
+sysadmin@UbuntuDesktop:~$ fping 15.199.95.91
+15.199.95.91 is unreachable
+sysadmin@UbuntuDesktop:~$ fping 15.199.94.91
+15.199.94.91 is unreachable
+sysadmin@UbuntuDesktop:~$ fping 11.199.158.91
+11.199.158.91 is unreachable
+sysadmin@UbuntuDesktop:~$ fping 167.172.144.11
+167.172.144.11 is alive
+sysadmin@UbuntuDesktop:~$ fping 11.199.141.91
+11.199.141.91 is unreachable
+
+out of all the Hollywood office IPs the only one that is active after doing an fping is 167.172.144.11
+
+this connection lies on OSI layer 3 : Network layer
+
+Phase 2 -----
+
+run nmap using the following command;
+sudo nmap -sS 167.172.144.11
+
+Nmap scan report for 167.172.144.11
+Host is up (0.00027s latency).
+Not shown: 814 filtered ports, 185 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+Nmap done: 1 IP address (1 host up) scanned in 2658.59 seconds
+
+OSI layer 4 : Transport layer
+
+Phase 3 -----
+
+ssh jimi@167.172.144.11 -p 22
+98.137.246.8 rollingstone.com
+
+nslookup rollingstone.com
+Server:		8.8.8.8
+Address:	8.8.8.8#53
+
+Non-authoritative answer:
+Name:	rollingstone.com
+Address: 151.101.192.69
+Name:	rollingstone.com
+Address: 151.101.0.69
+Name:	rollingstone.com
+Address: 151.101.128.69
+Name:	rollingstone.com
+Address: 151.101.64.69
+
+nslookup 98.137.246.8
+8.246.137.98.in-addr.arpa	name = unknown.yahoo.com.
+
+this is on OSI layer 7 : application layer
+
+Phase 4 -----
+packet no. 16 is a post request where a hacker has posted to Blues corp about the port 22 vunrability and is offering to give away the user and password to allow them to SSH into the system 
+for monetary gain
+
+DNS spoofing evidence is on packet 5 in the arp request and response, though this packet is based in 2014 where as the packet 16 is from 2019 so either the hacker is covering their tracks or
+this incident is not related
+
+OSI layer 7 : application layer -- for HTTP
+ARP happens on OSI layer 2 : data link - for MAC address and also on Layer 3 : Network Layer for IP

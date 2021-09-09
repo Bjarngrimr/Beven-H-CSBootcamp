@@ -1,0 +1,81 @@
+--- Mission 1 ---
+DNS type - Mail exchange (MX)
+By typing nslookup -type=mx starwars.com we get the following;
+    Server:		8.8.8.8
+    Address:	8.8.8.8#53
+
+    Non-authoritative answer:
+    starwars.com	mail exchanger = 1 aspmx.l.google.com.
+    starwars.com	mail exchanger = 5 alt2.aspmx.l.google.com.
+    starwars.com	mail exchanger = 5 alt1.aspx.l.google.com.
+    starwars.com	mail exchanger = 10 aspmx3.googlemail.com.
+    starwars.com	mail exchanger = 10 aspmx2.googlemail.com.
+The main issue here is that the Mail exchanger is wrong or outdated and needs to be updated
+
+The correct way it should be set up is as follows;
+    starwars.com    mail exchanger = 1 asltx.l.google.com   (this is a Primary address) 
+    starwars.com    mail exchanger = 5 asltx.2.google.com   (this is a secondary address)
+
+--- Mission 2 ---
+By typing nslookup -type=txt theforce.net we get the following;
+    Server:		8.8.8.8
+    Address:	8.8.8.8#53
+
+    Non-authoritative answer:
+    theforce.net	text = "google-site-verification=ycgY7mtk2oUZMagcffhFL_Qaf8Lc9tMRkZZSuig0d6w"
+    theforce.net	text = "v=spf1 a mx mx:smtp.secureserver.net include:aspmx.googlemail.com ip4:104.156.250.80 ip4:45.63.15.159 ip4:45.63.4.215"
+    theforce.net	text = "google-site-verification=XTU_We07Cux-6WCSOItl0c_WS29hzo92jPE341ckbOQ"
+
+The main issue is that on the second line that begins wuth "v=spf1" we can see a list of IPs but the new updated IP is not on this list.
+
+To fix this the second line should read as follows
+    theforce.net	text = "v=spf1 a mx mx:smtp.secureserver.net include:aspmx.googlemail.com ip4:104.156.250.80 ip4:45.63.15.159 ip4:45.63.4.215 ip4:45.23.176.21"
+
+--- Mission 3 ---
+By typing nslookup -type=CNAME www.theforce.net we get the following;
+    Server:		8.8.8.8
+    Address:	8.8.8.8#53
+
+    Non-authoritative answer:
+    www.theforce.net	canonical name = theforce.net.
+
+The Issue here is that there is no record for resistance.theforce.net
+
+to fix this, the record should be changed to;
+    Non-authoritative answer:
+    www.theforce.net	canonical name = theforce.net.
+    theforce.net    canonical name = resistance.theforce.net
+
+--- Mission 4 ---
+By typing nslookup -type=NS princessleia.site we get the following;
+    Server:		8.8.8.8
+    Address:	8.8.8.8#53
+
+    Non-authoritative answer:
+    princessleia.site	nameserver = ns25.domaincontrol.com.
+    princessleia.site	nameserver = ns26.domaincontrol.com.
+
+To solve the issue and allow access in the event of a SITH attack we simply need to add the backup DNS as follows;
+        Non-authoritative answer:
+        princessleia.site	nameserver = ns25.domaincontrol.com.
+        princessleia.site	nameserver = ns26.domaincontrol.com.
+        princessleia.site	nameserver = ns2.galaxybackup.com.
+
+--- Mission 5 ---
+The Shortest path to Jedha from Batuu is as follows;
+
+Batuu,D,C,E,F,J,I,L,Q,T,V,Jedha
+
+--- Mission 6 ---
+By typing in aircrack-ng -w /usr/share/wordlists/rockyou.txt /vagrant/Darkside.pcap from my home directory i find that the key is;
+dictionary
+
+the Darkside IP and mac addresses are as follows;
+
+    Sender MAC address: Cisco-Li_e3:e4:01 (00:0f:66:e3:e4:01)
+    Sender IP address: 172.16.0.1 (172.16.0.1)
+    Target MAC address: IntelCor_55:98:ef (00:13:ce:55:98:ef)
+    Target IP address: 172.16.0.101 (172.16.0.101)
+
+--- Mission 7 ---
+See thankyouscreenshot.png
