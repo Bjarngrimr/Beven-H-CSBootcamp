@@ -73,7 +73,9 @@
 
 4. Provide a report from the Lynis output on what can be done to harden the system.
 
-    - Screenshot of report output: see lynis_audit_report.png
+    - Screenshot of report output:
+
+    ![Lynis Output](Images/lynis_audit_report.PNG)
 
 
 ### Bonus
@@ -84,7 +86,9 @@
 3. Command to run expert mode:	 sudo chkrootkit -x
 
 4. Provide a report from the chrootkit output on what can be done to harden the system.
-    - Screenshot of end of sample output: see chkrootkit_report.png
+    - Screenshot of end of sample output:
+
+    ![chrootkit output](Images/chkrootkit_report.PNG)
 
 ---
 © 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.

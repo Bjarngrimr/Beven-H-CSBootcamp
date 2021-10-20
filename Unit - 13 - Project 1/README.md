@@ -2,12 +2,12 @@
 
 The files in this repository were used to configure the network depicted below.
 
-[Project Diagram](Images/Project-Diagram.drawio.png)
+![Project Diagram](Images/Project-Diagram.drawio.PNG)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook files may be used to install only certain pieces of it, such as Filebeat.
 
- [Elk Install](Playbooks/install-elk.yml)
- [Filebeat Install](Playbooks/filebeat-playbook.yml)
+ [Elk Install](Playbooks/install-elk.yml)  
+ [Filebeat Install](Playbooks/filebeat-playbook.yml)  
  [Metricbeat Install](Playbooks/metricbeat-playbook.yml)
 
 This document contains the following details:
@@ -74,7 +74,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-[Docker ps Success](Images/elk-docker.png)
+![Docker ps Success](Images/elk-docker.PNG)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -92,8 +92,8 @@ These Beats allow us to collect the following information from each machine:
 
 I also have the Visual Proof of Both Metricbeat and Filebeat are working correctly as intended;
 
-[Filebeat](Images/filebeat-success.png)
-[Metricbeat](Images/metricbeat-success.png)
+![Filebeat](Images/filebeat-success.PNG)
+![Metricbeat](Images/metricbeat-success.PNG)
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 

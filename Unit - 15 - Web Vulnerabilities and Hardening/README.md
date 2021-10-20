@@ -1,7 +1,7 @@
 # Web Application 1 :  
 
- [Hosts Deliverable](./Images/Hosts_Deliverable)
- [Passwords Deliverable](./Images/passwd_Deliverable)
+ ![Hosts Deliverable](./Images/Hosts_Deliverable.PNG)
+ ![Passwords Deliverable](./Images/passwd_Deliverable.PNG)
 
 ## Mitigations -  
 The Main way I would consider to mitigate this particular issue is to implement Input validation which will only allow an ip address lookup and will return an error if any other input is placed into the field.
@@ -10,7 +10,7 @@ Another solid way to mitigate this vulnerability is to have the application hand
 
 # Web Application 2 :  
 
- [Brute Force Deliverable](./Images/Bruteforce_deliverable)
+ ![Brute Force Deliverable](./Images/Bruteforce_deliverable.PNG)
 
 ## Mitigations -  
 A simple and rather effective way to mitigate this particular vulnerability is to implement 2FA (two factor authentication) as this will limit who can actually access this login even if the username and password is compromised.
@@ -19,10 +19,10 @@ Another effective way is to have strong passwords set to change regularly automa
 
 # Web Application 2 :  
 
- [XSS Success](Images/xxs_success_deliverable)
- [Pretty Theft](Images/Pretty_theft_deliverable)
- [Geolocation](Images/geolocation_success_deliverable)
- [Fake Notification](Images/fake_notification_success)
+ ![XSS Success](Images/xss_success_deliverable.PNG) 
+ ![Pretty Theft](Images/Pretty_theft_deliverable.PNG)
+ ![Geolocation](Images/geolocation_success_deliverable.PNG)
+ ![Fake Notification](Images/fake_notification_success.PNG)
 
 ## Mitigations -  
 In this case Mitigation is a more complex situation as it involves multiple steps and relies on effective training for the user themselves. For example a user should be trained to not input any login information in a random pop up that wasn’t the intended outcome to whatever they were doing, but as far as technical mitigations we can implement client side AV or detection software that will halt scripts that try to run. 
