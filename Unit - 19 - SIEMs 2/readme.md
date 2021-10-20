@@ -46,7 +46,7 @@ Note: This is a public-facing windows server that VSI employees access.
 
   However if we are expecting traffic from outside of the US then we can block all IPs coming from Ukraine
 
-![Geolocation_Evidence](./Images/Ukraine_evidence.png)
+[Geolocation_Evidence](Images/Ukraine_evidence.png)
 
 #### Question 2
 
