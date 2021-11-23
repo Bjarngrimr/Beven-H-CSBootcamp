@@ -74,7 +74,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![Docker ps Success](Images/elk-docker.PNG)
+![Docker ps Success](Images/elk-docker.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -92,8 +92,8 @@ These Beats allow us to collect the following information from each machine:
 
 I also have the Visual Proof of Both Metricbeat and Filebeat are working correctly as intended;
 
-![Filebeat](Images/filebeat-success.PNG)
-![Metricbeat](Images/metricbeat-success.PNG)
+![Filebeat](Images/filebeat-success.png)
+![Metricbeat](Images/Metricbeat-success.png)
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
